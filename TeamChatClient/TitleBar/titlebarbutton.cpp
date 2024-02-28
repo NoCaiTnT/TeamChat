@@ -23,54 +23,54 @@ void TitleBarButtonPrivate::reloadIcon() {
     }
 }
 
-TitleBarButton::TitleBarButton(QWidget *parent) : TitleBarButton(*new TitleBarButtonPrivate(), parent){}
+TitleBarButton::TitleBarButton(QWidget *parent) : TitleBarButton(*new TitleBarButtonPrivate(), parent) {}
 
 TitleBarButton::~TitleBarButton() = default;
 
-QIcon TitleBarButton::iconNormal() const{
+QIcon TitleBarButton::iconNormal() const {
     Q_D(const TitleBarButton);
     return d->icon_normal_;
 }
 
-void TitleBarButton::setIconNormal(const QIcon &icon){
+void TitleBarButton::setIconNormal(const QIcon &icon) {
     Q_D(TitleBarButton);
     d->icon_normal_ = icon;
     d->reloadIcon();
 }
 
-QIcon TitleBarButton::iconChecked() const{
+QIcon TitleBarButton::iconChecked() const {
     Q_D(const TitleBarButton);
     return d->icon_checked_;
 }
 
-void TitleBarButton::setIconChecked(const QIcon &icon){
+void TitleBarButton::setIconChecked(const QIcon &icon) {
     Q_D(TitleBarButton);
     d->icon_checked_ = icon;
     d->reloadIcon();
 }
 
-QIcon TitleBarButton::iconDisabled() const{
+QIcon TitleBarButton::iconDisabled() const {
     Q_D(const TitleBarButton);
     return d->icon_disabled_;
 }
 
-void TitleBarButton::setIconDisabled(const QIcon &icon){
+void TitleBarButton::setIconDisabled(const QIcon &icon) {
     Q_D(TitleBarButton);
     d->icon_disabled_ = icon;
     d->reloadIcon();
 }
 
-void TitleBarButton::checkStateSet(){
+void TitleBarButton::checkStateSet() {
     Q_D(TitleBarButton);
     d->reloadIcon();
 }
 
-void TitleBarButton::mouseDoubleClickEvent(QMouseEvent *event){
+void TitleBarButton::mouseDoubleClickEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         Q_EMIT doubleClicked();
     }
 }
 
-TitleBarButton::TitleBarButton(TitleBarButtonPrivate &d, QWidget *parent) : QPushButton(parent), d_ptr(&d){
+TitleBarButton::TitleBarButton(TitleBarButtonPrivate &d, QWidget *parent) : QPushButton(parent), d_ptr(&d) {
     d.q_ptr = this;
 }

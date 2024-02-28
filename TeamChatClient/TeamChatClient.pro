@@ -16,7 +16,8 @@ SOURCES += \
     TitleBar/titlebar.cpp \
     TitleBar/titlebarbutton.cpp \
     main.cpp \
-    clientwindow.cpp
+    clientwindow.cpp \
+    userinfo.cpp
 
 HEADERS += \
     QFramelessWindow/qframelesswindow.h \
@@ -24,7 +25,8 @@ HEADERS += \
     TitleBar/titlebarbutton.h \
     TitleBar/titlebarbuttonprivate.h \
     TitleBar/titlebarprivate.h \
-    clientwindow.h
+    clientwindow.h \
+    userinfo.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

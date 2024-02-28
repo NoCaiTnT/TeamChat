@@ -1,14 +1,13 @@
 #include "qframelesswindow.h"
 
-QFramelessWindow::QFramelessWindow(QWidget *parent)
-    : QMainWindow(parent){
+QFramelessWindow::QFramelessWindow(QWidget *parent) : QMainWindow(parent) {
     initWindow();
     resize(800,600);
 }
 
 QFramelessWindow::~QFramelessWindow() {}
 
-void QFramelessWindow::initTitleBar(){
+void QFramelessWindow::initTitleBar() {
     title_bar_ = new TitleBar();
 
     icon_button_ = new TitleBarButton();
@@ -43,7 +42,7 @@ void QFramelessWindow::initTitleBar(){
 
 }
 
-void QFramelessWindow::initWindow(){
+void QFramelessWindow::initWindow() {
 
     window_agent_ = new QWK::WidgetWindowAgent(this);
     window_agent_->setup(this);
@@ -63,14 +62,14 @@ void QFramelessWindow::initWindow(){
     connectAll();
 }
 
-void QFramelessWindow::connectAll(){
+void QFramelessWindow::connectAll() {
     connect(icon_button_, SIGNAL(clicked()), this, SLOT(clickIconButton()));
     connect(title_bar_, &TitleBar::minRequested, this, &QWidget::showMinimized);
     connect(title_bar_, SIGNAL(maxRequested(bool)), this, SLOT(clickMaxButton(bool)));
     connect(title_bar_, &TitleBar::closeRequested, this, &QWidget::close);
 }
 
-void QFramelessWindow::emulateLeaveEvent(QWidget *widget){
+void QFramelessWindow::emulateLeaveEvent(QWidget *widget) {
     Q_ASSERT(widget);
     if (!widget) {
         return;
@@ -93,12 +92,12 @@ void QFramelessWindow::emulateLeaveEvent(QWidget *widget){
     });
 }
 
-void QFramelessWindow::setTitleBar(QWidget *widget){
+void QFramelessWindow::setTitleBar(QWidget *widget) {
     window_agent_->setTitleBar(widget);
     setMenuWidget(widget);
 }
 
-void QFramelessWindow::setIconButton(QString path){
+void QFramelessWindow::setIconButton(QString path) {
     QIcon icon;
     icon.addFile(path);
     icon_button_->setIcon(icon);
@@ -106,20 +105,20 @@ void QFramelessWindow::setIconButton(QString path){
     title_bar_->setIconButton(icon_button_);
 }
 
-void QFramelessWindow::setTitleText(QString text){
+void QFramelessWindow::setTitleText(QString text) {
     title_text_->setText(text);
 }
 
-void QFramelessWindow::setStyle(QString path){
+void QFramelessWindow::setStyle(QString path) {
     QFile qss(path);
     qss.open(QFile::ReadOnly);
     setStyleSheet(qss.readAll());
     qss.close();
 }
 
-void QFramelessWindow::setTheme(Theme theme){
+void QFramelessWindow::setTheme(Theme theme) {
     theme_ = theme;
-    switch(theme){
+    switch(theme) {
         case Dark:
             setStyle(":/StyleSheet/QFramelessWindow/dark_style.qss");
             title_bar_->setStyle(":/StyleSheet/TitleBar/dark_style.qss");
@@ -131,11 +130,11 @@ void QFramelessWindow::setTheme(Theme theme){
         }
 }
 
-void QFramelessWindow::clickIconButton(){
+void QFramelessWindow::clickIconButton() {
     window_agent_->showSystemMenu(icon_button_->mapToGlobal(QPoint{0, icon_button_->height()}));
 }
 
-void QFramelessWindow::clickMaxButton(bool max){
+void QFramelessWindow::clickMaxButton(bool max) {
     if (max) {
         showMaximized();
     } else {
@@ -143,24 +142,22 @@ void QFramelessWindow::clickMaxButton(bool max){
     }
 }
 
-bool QFramelessWindow::event(QEvent *event){
+bool QFramelessWindow::event(QEvent *event) {
     switch (event->type()) {
-    case QEvent::WindowActivate: {
-        auto menu = menuWidget();
-        menu->setProperty("bar_active", true);
-        style()->polish(menu);
-        break;
-    }
-
-    case QEvent::WindowDeactivate: {
-        auto menu = menuWidget();
-        menu->setProperty("bar_active", false);
-        style()->polish(menu);
-        break;
-    }
-
-    default:
-        break;
+        case QEvent::WindowActivate: {
+            auto menu = menuWidget();
+            menu->setProperty("bar_active", true);
+            style()->polish(menu);
+            break;
+        }
+        case QEvent::WindowDeactivate: {
+            auto menu = menuWidget();
+            menu->setProperty("bar_active", false);
+            style()->polish(menu);
+            break;
+        }
+        default:
+            break;
     }
     return QMainWindow::event(event);
 }

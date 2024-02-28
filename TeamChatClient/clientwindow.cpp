@@ -1,12 +1,20 @@
 #include "clientwindow.h"
 
-ClientWindow::ClientWindow(QWidget *parent)
-    : QFramelessWindow(parent)
-{
-    this->setTitleText("This is title text!");
-    this->setIconButton();
-    this->setTheme(QFramelessWindow::Dark);
-    resize(900,700);
+ClientWindow::ClientWindow() {
+    this->setMinimumSize(250,500);
+    initTitleBar();
+    initUserInfo();
 }
 
-ClientWindow::~ClientWindow() {}
+void ClientWindow::initTitleBar() {
+    this->setIconButton(":/Resources/TitleBar/icon.svg");
+    this->setTitleText("TeamChat");
+    this->setTheme(QFramelessWindow::Light);
+    this->resize(250,500);
+}
+
+void ClientWindow::initUserInfo() {
+    userinfo_ = new UserInfo();
+    this->setCentralWidget(userinfo_);
+}
+

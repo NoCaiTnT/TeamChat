@@ -23,12 +23,11 @@ void TitleBarPrivate::initLayout() {
     q->setLayout(layout_);
 }
 
-QWidget *TitleBarPrivate::widgetAt(int index) const{
+QWidget *TitleBarPrivate::widgetAt(int index) const {
     return layout_->itemAt(index)->widget();
 }
 
-void TitleBarPrivate::setWidgetAt(int index, QWidget *widget)
-{
+void TitleBarPrivate::setWidgetAt(int index, QWidget *widget) {
     auto item = layout_->takeAt(index);
     auto orgWidget = item->widget();
     if (orgWidget) {
@@ -42,8 +41,7 @@ void TitleBarPrivate::setWidgetAt(int index, QWidget *widget)
     }
 }
 
-QWidget *TitleBarPrivate::takeWidgetAt(int index)
-{
+QWidget *TitleBarPrivate::takeWidgetAt(int index) {
     auto item = layout_->itemAt(index);
     auto orgWidget = item->widget();
     if (orgWidget) {
@@ -54,8 +52,7 @@ QWidget *TitleBarPrivate::takeWidgetAt(int index)
     return orgWidget;
 }
 
-void TitleBarPrivate::insertDefaultSpace(int index)
-{
+void TitleBarPrivate::insertDefaultSpace(int index) {
     layout_->insertSpacerItem(index, new QSpacerItem(0, 0));
 }
 
@@ -64,32 +61,32 @@ TitleBar::TitleBar(QWidget *parent) : TitleBar(*new TitleBarPrivate(), parent) {
 
 TitleBar::~TitleBar() = default;
 
-QAbstractButton *TitleBar::getIconButton() const{
+QAbstractButton *TitleBar::getIconButton() const {
     Q_D(const TitleBar);
     return static_cast<QAbstractButton *>(d->widgetAt(TitleBarPrivate::IconButton));
 }
 
-QLabel *TitleBar::getTitleLabel() const{
+QLabel *TitleBar::getTitleLabel() const {
     Q_D(const TitleBar);
     return static_cast<QLabel *>(d->widgetAt(TitleBarPrivate::TitleLabel));
 }
 
-QAbstractButton *TitleBar::getMinButton() const{
+QAbstractButton *TitleBar::getMinButton() const {
     Q_D(const TitleBar);
     return static_cast<QAbstractButton *>(d->widgetAt(TitleBarPrivate::MinimumButton));
 }
 
-QAbstractButton *TitleBar::getMaxButton() const{
+QAbstractButton *TitleBar::getMaxButton() const {
     Q_D(const TitleBar);
     return static_cast<QAbstractButton *>(d->widgetAt(TitleBarPrivate::MaximumButton));
 }
 
-QAbstractButton *TitleBar::getCloseButton() const{
+QAbstractButton *TitleBar::getCloseButton() const {
     Q_D(const TitleBar);
     return static_cast<QAbstractButton *>(d->widgetAt(TitleBarPrivate::CloseButton));
 }
 
-void TitleBar::setIconButton(QAbstractButton *btn){
+void TitleBar::setIconButton(QAbstractButton *btn) {
     Q_D(TitleBar);
     auto org = takeIconButton();
     if (org)
@@ -102,7 +99,7 @@ void TitleBar::setIconButton(QAbstractButton *btn){
     btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
 }
 
-void TitleBar::setTitleLabel(QLabel *label){
+void TitleBar::setTitleLabel(QLabel *label) {
     Q_D(TitleBar);
     auto org = takeTitleLabel();
     if (org)
@@ -115,7 +112,7 @@ void TitleBar::setTitleLabel(QLabel *label){
     label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 }
 
-void TitleBar::setMinButton(QAbstractButton *btn){
+void TitleBar::setMinButton(QAbstractButton *btn) {
     Q_D(TitleBar);
     auto org = takeMinButton();
     if (org)
@@ -126,7 +123,7 @@ void TitleBar::setMinButton(QAbstractButton *btn){
     connect(btn, &QAbstractButton::clicked, this, &TitleBar::minRequested);
 }
 
-void TitleBar::setMaxButton(QAbstractButton *btn){
+void TitleBar::setMaxButton(QAbstractButton *btn) {
     Q_D(TitleBar);
     auto org = takeMaxButton();
     if (org)
@@ -137,7 +134,7 @@ void TitleBar::setMaxButton(QAbstractButton *btn){
     connect(btn, &QAbstractButton::clicked, this, &TitleBar::maxRequested);
 }
 
-void TitleBar::setCloseButton(QAbstractButton *btn){
+void TitleBar::setCloseButton(QAbstractButton *btn) {
     Q_D(TitleBar);
     auto org = takeCloseButton();
     if (org)
@@ -148,17 +145,17 @@ void TitleBar::setCloseButton(QAbstractButton *btn){
     connect(btn, &QAbstractButton::clicked, this, &TitleBar::closeRequested);
 }
 
-QAbstractButton *TitleBar::takeIconButton(){
+QAbstractButton *TitleBar::takeIconButton() {
     Q_D(TitleBar);
     return static_cast<QAbstractButton *>(d->takeWidgetAt(TitleBarPrivate::IconButton));
 }
 
-QLabel *TitleBar::takeTitleLabel(){
+QLabel *TitleBar::takeTitleLabel() {
     Q_D(TitleBar);
     return static_cast<QLabel *>(d->takeWidgetAt(TitleBarPrivate::TitleLabel));
 }
 
-QAbstractButton *TitleBar::takeMinButton(){
+QAbstractButton *TitleBar::takeMinButton() {
     Q_D(TitleBar);
     auto btn = static_cast<QAbstractButton *>(d->takeWidgetAt(TitleBarPrivate::MinimumButton));
     if (!btn) {
@@ -168,7 +165,7 @@ QAbstractButton *TitleBar::takeMinButton(){
     return btn;
 }
 
-QAbstractButton *TitleBar::takeMaxButton(){
+QAbstractButton *TitleBar::takeMaxButton() {
     Q_D(TitleBar);
     auto btn = static_cast<QAbstractButton *>(d->takeWidgetAt(TitleBarPrivate::MaximumButton));
     if (!btn) {
@@ -178,7 +175,7 @@ QAbstractButton *TitleBar::takeMaxButton(){
     return btn;
 }
 
-QAbstractButton *TitleBar::takeCloseButton(){
+QAbstractButton *TitleBar::takeCloseButton() {
     Q_D(TitleBar);
     auto btn = static_cast<QAbstractButton *>(d->takeWidgetAt(TitleBarPrivate::CloseButton));
     if (!btn) {
@@ -188,12 +185,12 @@ QAbstractButton *TitleBar::takeCloseButton(){
     return btn;
 }
 
-QWidget *TitleBar::hostWidget() const{
+QWidget *TitleBar::hostWidget() const {
     Q_D(const TitleBar);
     return d->w_;
 }
 
-void TitleBar::setHostWidget(QWidget *w){
+void TitleBar::setHostWidget(QWidget *w) {
     Q_D(TitleBar);
     QWidget *org = d->w_;
     if (org) {
@@ -205,32 +202,32 @@ void TitleBar::setHostWidget(QWidget *w){
     }
 }
 
-bool TitleBar::titleFollowWindow() const{
+bool TitleBar::titleFollowWindow() const {
     Q_D(const TitleBar);
     return d->auto_title_;
 }
 
-void TitleBar::setTitleFollowWindow(bool value){
+void TitleBar::setTitleFollowWindow(bool value) {
     Q_D(TitleBar);
     d->auto_title_ = value;
 }
 
-bool TitleBar::iconFollowWindow() const{
+bool TitleBar::iconFollowWindow() const {
     Q_D(const TitleBar);
     return d->auto_icon_;
 }
 
-void TitleBar::setIconFollowWindow(bool value){
+void TitleBar::setIconFollowWindow(bool value) {
     Q_D(TitleBar);
     d->auto_icon_ = value;
 }
 
-TitleBar::TitleBar(TitleBarPrivate &d, QWidget *parent) : QFrame(parent), d_ptr(&d){
+TitleBar::TitleBar(TitleBarPrivate &d, QWidget *parent) : QFrame(parent), d_ptr(&d) {
     d.q_ptr = this;
     d.initLayout();
 }
 
-void TitleBar::setStyle(QString path){
+void TitleBar::setStyle(QString path) {
     QFile qss(path);
     qss.open(QFile::ReadOnly);
     setStyleSheet(qss.readAll());
