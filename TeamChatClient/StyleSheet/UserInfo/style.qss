@@ -1,0 +1,22 @@
+
+
+QLabel#avatar {
+    border-radius:25px;
+    border: 2px solid #ECECEC;
+}
+
+QLabel#avatar:hover,
+QLabel#avatar:pressed{
+    border-radius: 25px;
+    border: 2px solid green;
+}
+
+QLabel#nickname{
+    font-size:18px;
+    color: blue;
+}
+
+QLabel#status{
+    font-size:12px;
+    color: blue;
+}

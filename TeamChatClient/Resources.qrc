@@ -7,5 +7,6 @@
         <file>Resources/TitleBar/minimize.svg</file>
         <file>Resources/TitleBar/more_line.svg</file>
         <file>Resources/TitleBar/restore.svg</file>
+        <file>Resources/UserInfo/defaultAvatar.svg</file>
     </qresource>
 </RCC>
