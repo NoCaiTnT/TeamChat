@@ -1,0 +1,57 @@
+QLabel#avatar {
+    border-radius: 50px;
+    border: 2px solid #ECECEC;
+}
+
+QLineEdit {
+    border-radius: 5px;
+    border: 1px solid blue;
+    font-size: 16px;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 40px;
+    max-height: 40px;
+    font-family: "Microsoft YaHei";
+}
+
+QPushButton#login:enabled {
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 35px;
+    max-height: 35px;
+    font-size: 15px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    background-color: #0C41FF;
+    border-radius: 5px;
+}
+
+QPushButton#login {
+    background-color: #63AEFF;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 35px;
+    max-height: 35px;
+    font-size: 15px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+QLabel#register {
+    font-size: 14px;
+    color: blue;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#retrieve {
+    font-size: 14px;
+    color: blue;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#service-agreements {
+    font-size: 12px;
+    color: #808080;
+    font-family: "Microsoft YaHei";
+}

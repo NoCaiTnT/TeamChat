@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Resources/TitleBar/appIcon.png</file>
         <file>Resources/TitleBar/close.svg</file>
         <file>Resources/TitleBar/fullscreen.svg</file>
         <file>Resources/TitleBar/maximize.svg</file>
@@ -9,5 +8,20 @@
         <file>Resources/TitleBar/restore.svg</file>
         <file>Resources/UserInfo/defaultAvatar.svg</file>
         <file>Resources/TitleBar/icon.svg</file>
+        <file>Resources/UserInfo/statusInvisible.svg</file>
+        <file>Resources/UserInfo/statusOffline.svg</file>
+        <file>Resources/UserInfo/statusOnline.svg</file>
+        <file>Resources/MainWindow/icon.ico</file>
+        <file>Resources/FriendInfo/search.svg</file>
+        <file>Resources/FriendInfo/add.svg</file>
+        <file>Resources/FriendInfo/add_friend.svg</file>
+        <file>Resources/FriendInfo/creat_group.svg</file>
+        <file>Resources/Commons/search_clear.svg</file>
+        <file>Resources/Commons/hide_password.svg</file>
+        <file>Resources/Commons/show_password.svg</file>
+        <file>Resources/Commons/tip.svg</file>
+        <file>Resources/TopTipBox/error_icon.png</file>
+        <file>Resources/TopTipBox/info_icon.png</file>
+        <file>Resources/TopTipBox/warning_icon.png</file>
     </qresource>
 </RCC>

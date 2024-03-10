@@ -6,7 +6,7 @@
 #include <QLabel>
 #include <QAbstractButton>
 #include <QFile>
-
+#include <QEvent>
 class TitleBarPrivate;
 
 class TitleBar : public QFrame{

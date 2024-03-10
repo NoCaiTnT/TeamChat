@@ -12,11 +12,12 @@ TitleBar>QLabel#win_title_label {
     color: #ECECEC;
     background-color: transparent;
     min-height: 28px;
+    font-family: "Microsoft YaHei";
 }
 
 TitleBar>QAbstractButton[system_button=true] {
     qproperty-iconSize: 12px 12px;
-    min-width: 50px;
+    min-width: 40px;
     border: none;
     padding: 0;
     background-color: transparent;

@@ -56,8 +56,7 @@ void TitleBarPrivate::insertDefaultSpace(int index) {
     layout_->insertSpacerItem(index, new QSpacerItem(0, 0));
 }
 
-TitleBar::TitleBar(QWidget *parent) : TitleBar(*new TitleBarPrivate(), parent) {
-}
+TitleBar::TitleBar(QWidget *parent) : TitleBar(*new TitleBarPrivate(), parent) {}
 
 TitleBar::~TitleBar() = default;
 

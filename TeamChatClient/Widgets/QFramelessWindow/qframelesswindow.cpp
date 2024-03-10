@@ -56,13 +56,13 @@ void QFramelessWindow::initWindow() {
     window_agent_->setSystemButton(QWK::WindowAgentBase::Close, close_button_);
 
     setMenuWidget(title_bar_);
-    theme_ = Dark;
+    theme_ = DARK;
     setTheme(theme_);
 
-    connectAll();
+    initConnect();
 }
 
-void QFramelessWindow::connectAll() {
+void QFramelessWindow::initConnect() {
     connect(icon_button_, SIGNAL(clicked()), this, SLOT(clickIconButton()));
     connect(title_bar_, &TitleBar::minRequested, this, &QWidget::showMinimized);
     connect(title_bar_, SIGNAL(maxRequested(bool)), this, SLOT(clickMaxButton(bool)));
@@ -119,11 +119,11 @@ void QFramelessWindow::setStyle(QString path) {
 void QFramelessWindow::setTheme(Theme theme) {
     theme_ = theme;
     switch(theme) {
-        case Dark:
+        case DARK:
             setStyle(":/StyleSheet/QFramelessWindow/dark_style.qss");
             title_bar_->setStyle(":/StyleSheet/TitleBar/dark_style.qss");
             break;
-        case Light:
+        case LIGHT:
             setStyle(":/StyleSheet/QFramelessWindow/light_style.qss");
             title_bar_->setStyle(":/StyleSheet/TitleBar/light_style.qss");
             break;

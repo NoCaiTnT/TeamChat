@@ -1,0 +1,86 @@
+QLineEdit {
+    border-radius: 5px;
+    border: 1px solid blue;
+    font-size: 16px;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 40px;
+    max-height: 40px;
+    font-family: "Microsoft YaHei";
+}
+
+QLineEdit#email-verification-code {
+    min-width: 150px;
+    max-width: 150px;
+    font-family: "Microsoft YaHei";
+}
+
+QPushButton#register:enabled {
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 35px;
+    max-height: 35px;
+    font-size: 15px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    background-color: #0C41FF;
+    border-radius: 5px;
+}
+
+QPushButton#register {
+    background-color: #63AEFF;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 35px;
+    max-height: 35px;
+    font-size: 15px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+QPushButton#email-send-verification-code {
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 40px;
+    max-height: 40px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#service-agreements {
+    font-size: 12px;
+    color: #808080;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#welcome-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: blue;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#welcome-message {
+    font-size: 17px;
+    color: blue;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#nickname-error-tip {
+    font-size: 13px;
+    color: red;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#password-error-tip {
+    font-size: 13px;
+    color: red;
+    font-family: "Microsoft YaHei";
+}
+
+QLabel#email-error-tip {
+    font-size: 13px;
+    color: red;
+    font-family: "Microsoft YaHei";
+}

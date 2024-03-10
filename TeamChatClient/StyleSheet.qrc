@@ -5,5 +5,12 @@
         <file>StyleSheet/TitleBar/dark_style.qss</file>
         <file>StyleSheet/TitleBar/light_style.qss</file>
         <file>StyleSheet/UserInfo/style.qss</file>
+        <file>StyleSheet/FriendInfo/style.qss</file>
+        <file>StyleSheet/Login/style.qss</file>
+        <file>StyleSheet/Register/style.qss</file>
+        <file>StyleSheet/Retrieve/style.qss</file>
+        <file>StyleSheet/TopTipBox/error_style.qss</file>
+        <file>StyleSheet/TopTipBox/info_style.qss</file>
+        <file>StyleSheet/TopTipBox/warning_style.qss</file>
     </qresource>
 </RCC>

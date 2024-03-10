@@ -1,38 +1,19 @@
-QLabel#avatar {
-    border-radius: 35px;
-    border: 2px solid #ECECEC;
-}
-
-QLabel#avatar:hover,
-QLabel#avatar:pressed {
-    border-radius: 35px;
-    border: 2px solid green;
-}
-
-QLabel#nickname {
-    font-size: 25px;
-    color: blue;
-    font-weight: bold;
-    background-color: transparent;
-    font-family: "Microsoft YaHei";
-}
-
-QLabel#status {
-    font-size: 15px;
-    font-weight: bold;
-    font-family: "Microsoft YaHei";
-}
-
-QPushButton#status-choose {
+QLineEdit#searchbar {
+    border-radius: 5px;
+    border: 2px solid blue;
+    min-height: 35px;
+    max-height: 35px;
     font-size: 17px;
-    font-weight: bold;
-    border: none;
-    color: blue;
-    margin-top: 3px;
-    min-width: 30px;
-    min-height: 20px;
-    max-width: 30px;
-    max-height: 20px;
+    font-family: "Microsoft YaHei";
+}
+
+QPushButton#add-friend {
+    border-radius: 5px;
+    border: 2px solid blue;
+    min-width: 35px;
+    max-width: 35px;
+    min-height: 35px;
+    max-height: 35px;
     font-family: "Microsoft YaHei";
 }
 
@@ -55,5 +36,22 @@ QMenu::item {
 
 QMenu::item:selected {
     background-color: #EDEDEF;
+    font-family: "Microsoft YaHei";
+}
+
+QListWidget {
+    border: none;
+    font-family: "Microsoft YaHei";
+}
+
+QListWidget::item {
+    min-height: 30px;
+    max-height: 30px;
+    font-family: "Microsoft YaHei";
+
+}
+
+QListWidget::item:selected {
+    background-color: blue;
     font-family: "Microsoft YaHei";
 }

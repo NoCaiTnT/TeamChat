@@ -1,0 +1,12 @@
+
+QWidget#this-widget {
+    background-color: #FDF6EC;
+    border-radius: 5px;
+}
+
+QWidget#text {
+    color: #F7A200;
+    background: transparent;
+    font-size:15px;
+    font-family: "Microsoft YaHei";
+}

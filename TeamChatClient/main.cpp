@@ -1,10 +1,11 @@
-#include "clientwindow.h"
-
+#include "login.h"
+#include "register.h"
 #include <QApplication>
-
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    ClientWindow w;
+    // Register w;
+    // w.show();
+    Login w;
     w.show();
     return a.exec();
 }
