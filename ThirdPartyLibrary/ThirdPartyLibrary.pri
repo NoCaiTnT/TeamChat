@@ -8,20 +8,29 @@ win32{
         SOURCES += \
             $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.grpc.pb.cc \
             $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.pb.cc \
+            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.grpc.pb.cc \
+            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.pb.cc \
 
         HEADERS += \
             $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.grpc.pb.h \
             $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.pb.h \
+            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.grpc.pb.h \
+            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.pb.h \
+
     }else{
         INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release
 
         SOURCES += \
             $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.grpc.pb.cc \
             $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.pb.cc \
+            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.grpc.pb.cc \
+            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.pb.cc \
 
         HEADERS += \
             $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.grpc.pb.h \
             $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.pb.h \
+            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.grpc.pb.h \
+            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.pb.h \
     }
     #QFramelessWindow
     contains(QT_ARCH, i386) {
@@ -49,15 +58,15 @@ unix{
             $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.grpc.pb.h \
             $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.pb.h \
     }else{
-            INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release
+        INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release
 
-            SOURCES += \
-                $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.cc \
-                $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.cc \
+        SOURCES += \
+            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.cc \
+            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.cc \
 
-            HEADERS += \
-                $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.h \
-                $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.h \
+        HEADERS += \
+            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.h \
+            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.h \
     }
     #QFramelessWindow
     include(qwindowkit_linux/share/QWindowKit/qmake/QWKWidgets.pri)

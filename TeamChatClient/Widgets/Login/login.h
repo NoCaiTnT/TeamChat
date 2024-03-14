@@ -10,6 +10,7 @@
 #include "qframelesswindow.h"
 #include "register.h"
 #include "retrieve.h"
+#include "clientglobal.h"
 
 class Login : public QFramelessWindow
 {

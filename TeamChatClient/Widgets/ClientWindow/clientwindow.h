@@ -2,7 +2,7 @@
 #define CLIENTWINDOW_H
 
 #include "qframelesswindow.h"
-#include "userinfo.h"
+#include "userinfoclient.h"
 #include "friendinfo.h"
 
 class ClientWindow : public QFramelessWindow
@@ -13,7 +13,7 @@ public:
     ClientWindow();
 
 private:
-    UserInfo *userinfo_;                //用户信息窗口
+    UserInfoClient *userinfo_;                //用户信息窗口
     FriendInfo *friendinfo_;            //好友信息窗口
 
 private:

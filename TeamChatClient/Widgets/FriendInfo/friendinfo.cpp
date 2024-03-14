@@ -80,7 +80,8 @@ void FriendInfo::searchTextChanged(QString text) {
 }
 
 void FriendInfo::searchOldFriend() {
-    listwidget_old_friend_list_->addItem("你按回车了！");
+
+    listwidget_old_friend_list_->addItem("data");
 }
 
 void FriendInfo::showAddFriendMenu() {

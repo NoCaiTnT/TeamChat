@@ -57,3 +57,7 @@ QMenu::item:selected {
     background-color: #EDEDEF;
     font-family: "Microsoft YaHei";
 }
+
+QLabel#weather-icon {
+    border: 2px solid red;
+}

@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,9 +19,11 @@ INCLUDEPATH += \
     $$PWD/Widgets/TopTipBox \
     $$PWD/Widgets/MaskLayer \
     $$PWD/Utils \
+    $$PWD/Global \
 
 SOURCES += \
     main.cpp \
+    Global\clientglobal.cpp \
     Widgets/QFramelessWindow/qframelesswindow.cpp \
     Widgets/TitleBar/titlebarbutton.cpp \
     Widgets/TitleBar/titlebar.cpp \
@@ -29,13 +31,16 @@ SOURCES += \
     Widgets/Register/register.cpp \
     Widgets/Retrieve/retrieve.cpp \
     Widgets/ClientWindow/clientwindow.cpp \
-    Widgets/UserInfo/userinfo.cpp \
     Widgets/FriendInfo/friendinfo.cpp \
     Widgets/TopTipBox/toptipbox.cpp \
     Widgets/MaskLayer/masklayer.cpp \
+    Widgets/UserInfo/userinfoclient.cpp \
     Utils/qstringutils.cpp \
+    Utils/requestweatherclient.cpp \
+    Utils/wearthclient.cpp \
 
 HEADERS += \
+    Global\clientglobal.h \
     Widgets/QFramelessWindow/qframelesswindow.h \
     Widgets/TitleBar/titlebarbuttonprivate.h \
     Widgets/TitleBar/titlebarbutton.h \
@@ -45,11 +50,14 @@ HEADERS += \
     Widgets/Register/register.h \
     Widgets/Retrieve/retrieve.h \
     Widgets/ClientWindow/clientwindow.h \
-    Widgets/UserInfo/userinfo.h \
     Widgets/FriendInfo/friendinfo.h \
     Widgets/TopTipBox/toptipbox.h \
     Widgets/MaskLayer/masklayer.h \
+    Widgets/UserInfo/userinfoclient.h \
     Utils/qstringutils.h \
+    Utils/requestweatherclient.h \
+    Utils/wearthclient.h \
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

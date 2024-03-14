@@ -1,0 +1,67 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.teamchat.weather";
+option java_outer_classname = "WeatherProto";
+option objc_class_prefix = "TC_Weather";
+
+package weather;
+
+service Weather {
+  rpc getLivesWeather (UserInfo) returns (LivesWeatherReplay) {}
+  rpc getForecastWeather (UserInfo) returns (ForecastWeatherReplay) {}
+}
+
+// Request
+message UserInfo {
+  string username = 1;
+  string userip = 2;
+}
+
+message LivesWeather {
+    string weather = 1;
+    string temperature = 2; 
+    string winddirection = 3;
+    string windpower = 4;
+    string humidity = 5;
+    string reporttime = 6; 
+    string temperatureFloat = 7;
+    string humidityFloat = 8;
+}
+
+message ForecastWeather {
+    string date = 1;
+    string week = 2;
+    string dayweather = 3;
+    string nightweather = 4;
+    string daytemp = 5;
+    string nighttemp = 6;
+    string daywind = 7;
+    string nightwind = 8;
+    string daypower = 9;
+    string nightpower = 10;
+}
+
+//Replay
+message LivesWeatherReplay {
+	LivesWeather livesWeather = 1;
+}
+
+message ForecastWeatherReplay {
+	string reporttime = 1;
+	repeated ForecastWeather forecastWeathers = 2;
+}

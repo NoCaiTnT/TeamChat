@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QListWidget>
 #include <QMenu>
+#include <QtConcurrent>
 
 class FriendInfo : public QWidget
 {
@@ -17,6 +18,7 @@ public:
     explicit FriendInfo(QWidget *parent = nullptr);
 
 signals:
+    void signalMainBeforeTask();
 
 private slots:
     void clearSearchEditLine(bool);                                 //清除搜索框内容

@@ -23,5 +23,14 @@
         <file>Resources/TopTipBox/error_icon.png</file>
         <file>Resources/TopTipBox/info_icon.png</file>
         <file>Resources/TopTipBox/warning_icon.png</file>
+        <file>Resources/UserInfo/weather_cloudy.svg</file>
+        <file>Resources/UserInfo/weather_foggy.svg</file>
+        <file>Resources/UserInfo/weather_hazy.svg</file>
+        <file>Resources/UserInfo/weather_rainy.svg</file>
+        <file>Resources/UserInfo/weather_sandstorm.svg</file>
+        <file>Resources/UserInfo/weather_snowy.svg</file>
+        <file>Resources/UserInfo/weather_sunny.svg</file>
+        <file>Resources/UserInfo/weather_unknow.svg</file>
+        <file>Resources/UserInfo/weather_windy.svg</file>
     </qresource>
 </RCC>

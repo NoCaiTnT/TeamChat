@@ -15,7 +15,7 @@ void ClientWindow::initTitleBar() {
 
 void ClientWindow::initCentralWidget() {
     QWidget *all_widgets = new QWidget();
-    userinfo_ = new UserInfo();
+    userinfo_ = new UserInfoClient();
     friendinfo_ = new FriendInfo();
 
     QVBoxLayout *mainwindow = new QVBoxLayout();

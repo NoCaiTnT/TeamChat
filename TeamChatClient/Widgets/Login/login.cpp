@@ -184,6 +184,8 @@ void Login::clickedLogin() {
     }
 
     this->close();
+    ClientGlobal *clientglobal = ClientGlobal::getInstance();
+    clientglobal->setUserName(lineedit_username_->text());
     ClientWindow *w = new ClientWindow();
     w->show();
 }
