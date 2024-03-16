@@ -1,5 +1,5 @@
 # TeamChat
-基于GRPC和QFramelessWindow的跨平台聊天系统
+基于GRPC和QFramelessWindow，使用Qt Creator开发的跨平台多功能聊天系统（正在添加...）
 
 ## 使用的第三方库
 1. [QtGRPC](https://github.com/NoCaiTnT/QtGrpc)
