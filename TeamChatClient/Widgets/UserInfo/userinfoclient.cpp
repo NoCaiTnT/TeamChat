@@ -159,9 +159,25 @@ void UserInfoClient::setWeatherIcon(QString url, int size) {
     label_weather_icon_->setPixmap(pixmap);
 }
 
+void UserInfoClient::closeEvent(QCloseEvent *e) {
+    if (thread_weather_ != nullptr) {
+        thread_weather_->quit();
+        thread_weather_->wait();
+        thread_weather_ = nullptr;
+        requset_weather_client_ = nullptr;
+    }
+    isclosed = true;
+    this->close();
+}
+
 
 void UserInfoClient::setWeather() {
+    if (isclosed == true) return;
     qDebug() << "Weather seted!";
+    thread_weather_->quit();
+    thread_weather_->wait();
+    thread_weather_ = nullptr;
+    requset_weather_client_ = nullptr;
     auto lives_weather = requset_weather_client_->getWeathers()->getLivesWeather();
     if (lives_weather != nullptr) {
         int iconSize = 60;

@@ -47,7 +47,7 @@ private:
     void getLivesWeatherFromServer();
     void getForecastWeatherFromServer();
 private:
-    std::unique_ptr<Weather::Stub> stub_;
+    std::unique_ptr<weather::Weather::Stub> stub_;
 };
 
 #endif // REQUESTWEATHERCLIENT_H

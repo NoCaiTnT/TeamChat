@@ -1,36 +1,46 @@
 #add both windows and linux can use
+
+GRPC_DEBUG_PROTO_WIN = $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug
+GRPC_RELEASE_PROTO_WIN = $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release
+GRPC_DEBUG_PROTO_LINUX = $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug
+GRPC_RELEASE_PROTO_LINUX = $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release
 win32{
     #GRPC
     include($$PWD/grpc/GRPC_Windows.pri)
+    #proto
     CONFIG(debug,debug|release){
-        INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug
+        INCLUDEPATH += \
+            $$GRPC_DEBUG_PROTO_WIN/Weather \
+            $$GRPC_DEBUG_PROTO_WIN/Email \
 
         SOURCES += \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.pb.cc \
+            $$GRPC_DEBUG_PROTO_WIN/Weather/weather.grpc.pb.cc \
+            $$GRPC_DEBUG_PROTO_WIN/Weather/weather.pb.cc \
+            $$GRPC_DEBUG_PROTO_WIN/Email/email.grpc.pb.cc \
+            $$GRPC_DEBUG_PROTO_WIN/Email/email.pb.cc \
 
         HEADERS += \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/helloworld.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_win/proto_gen_debug/weather.pb.h \
+            $$GRPC_DEBUG_PROTO_WIN/Weather/weather.grpc.pb.h \
+            $$GRPC_DEBUG_PROTO_WIN/Weather/weather.pb.h \
+            $$GRPC_DEBUG_PROTO_WIN/Email/email.grpc.pb.h \
+            $$GRPC_DEBUG_PROTO_WIN/Email/email.pb.h \
 
     }else{
-        INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release
+        INCLUDEPATH += \
+            $$GRPC_RELEASE_PROTO_WIN/Weather \
+            $$GRPC_RELEASE_PROTO_WIN/Email \
 
         SOURCES += \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.pb.cc \
+            $$GRPC_RELEASE_PROTO_WIN/Weather/weather.grpc.pb.cc \
+            $$GRPC_RELEASE_PROTO_WIN/Weather/weather.pb.cc \
+            $$GRPC_RELEASE_PROTO_WIN/Email/email.grpc.pb.cc \
+            $$GRPC_RELEASE_PROTO_WIN/Email/email.pb.cc \
 
         HEADERS += \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/helloworld.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_release_win/proto_gen_release/weather.pb.h \
+            $$GRPC_RELEASE_PROTO_WIN/Weather/weather.grpc.pb.h \
+            $$GRPC_RELEASE_PROTO_WIN/Weather/weather.pb.h \
+            $$GRPC_RELEASE_PROTO_WIN/Email/email.grpc.pb.h \
+            $$GRPC_RELEASE_PROTO_WIN/Email/email.pb.h \
     }
     #QFramelessWindow
     contains(QT_ARCH, i386) {
@@ -47,26 +57,39 @@ win32{
 unix{
     #GRPC
     include(grpc/GRPC_Linux.pri)
+    #proto
     CONFIG(debug,debug|release){
-        INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug
+        INCLUDEPATH += \
+            $$GRPC_DEBUG_PROTO_LINUX/Weather \
+            $$GRPC_DEBUG_PROTO_LINUX/Email \
 
         SOURCES += \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.pb.cc \
+            $$GRPC_DEBUG_PROTO_LINUX/Weather/weather.grpc.pb.cc \
+            $$GRPC_DEBUG_PROTO_LINUX/Weather/weather.pb.cc \
+            $$GRPC_DEBUG_PROTO_LINUX/Email/email.grpc.pb.cc \
+            $$GRPC_DEBUG_PROTO_LINUX/Email/email.pb.cc \
 
         HEADERS += \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_debug_linux/proto_gen_debug/helloworld.pb.h \
+            $$GRPC_DEBUG_PROTO_LINUX/Weather/weather.grpc.pb.h \
+            $$GRPC_DEBUG_PROTO_LINUX/Weather/weather.pb.h \
+            $$GRPC_DEBUG_PROTO_LINUX/Email/email.grpc.pb.h \
+            $$GRPC_DEBUG_PROTO_LINUX/Email/email.pb.h \
     }else{
-        INCLUDEPATH += $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release
+        INCLUDEPATH += \
+            $$GRPC_RELEASE_PROTO_LINUX/Weather \
+            $$GRPC_RELEASE_PROTO_LINUX/Email \
 
         SOURCES += \
-            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.cc \
-            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.cc \
+            $$GRPC_RELEASE_PROTO_LINUX/Weather/weather.grpc.pb.cc \
+            $$GRPC_RELEASE_PROTO_LINUX/Weather/weather.pb.cc \
+            $$GRPC_RELEASE_PROTO_LINUX/Email/email.grpc.pb.cc \
+            $$GRPC_RELEASE_PROTO_LINUX/Email/email.pb.cc \
 
         HEADERS += \
-            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.grpc.pb.h \
-            $$PWD/grpc/gRPC_install/grpc_install_release_linux/proto_gen_release/helloworld.pb.h \
+            $$GRPC_RELEASE_PROTO_LINUX/Weather/weather.grpc.pb.h \
+            $$GRPC_RELEASE_PROTO_LINUX/Weather/weather.pb.h \
+            $$GRPC_RELEASE_PROTO_LINUX/Email/email.grpc.pb.h \
+            $$GRPC_RELEASE_PROTO_LINUX/Email/email.pb.h \
     }
     #QFramelessWindow
     include(qwindowkit_linux/share/QWindowKit/qmake/QWKWidgets.pri)

@@ -50,7 +50,7 @@ void TopTipBox::initConnects() {
     connect(timer_show_timeout_, &QTimer::timeout, this, &TopTipBox::endAnimation);
 }
 
-void TopTipBox::showTopTipBox(QWidget *parent, TipBoxType type, const QString &text) {
+void TopTipBox::showTopTipBox(QWidget *parent, TopTipBoxType type, const QString &text) {
 
     QWidget::hide();
     timer_show_timeout_->stop();
@@ -104,7 +104,7 @@ void TopTipBox::endAnimation() {
     });
 }
 
-void TopTipBox::updateUI(TipBoxType type, const QString &text) {
+void TopTipBox::updateUI(TopTipBoxType type, const QString &text) {
     if (auto_size_ == true) {
         QFont font("Microsoft YaHei");
         QFontMetrics fontMetrics(font);
@@ -112,19 +112,19 @@ void TopTipBox::updateUI(TipBoxType type, const QString &text) {
         this->setFixedWidth(width + 70);
     }
     switch (type) {
-        case INFO: {
+        case INFOTIP: {
             label_text_->setText(text);
             setIcon(":/Resources/TopTipBox/info_icon.png", 24);
             setStyle(":/StyleSheet/TopTipBox/info_style.qss");
             break;
         }
-        case WARNING: {
+        case WARNINGTIP: {
             label_text_->setText(text);
             setIcon(":/Resources/TopTipBox/warning_icon.png", 24);
             setStyle(":/StyleSheet/TopTipBox/warning_style.qss");
             break;
         }
-        case ERROR: {
+        case ERRORTIP: {
             label_text_->setText(text);
             setIcon(":/Resources/TopTipBox/error_icon.png", 24);
             setStyle(":/StyleSheet/TopTipBox/error_style.qss");
@@ -172,17 +172,17 @@ void TopTipBox::closeAll() {
 
 void TopTipBox::showInformationTopTipBox(QWidget *parent, const QString &text) {
     if (toptipbox_instance_ == NULL) toptipbox_instance_ = new TopTipBox(parent);
-    toptipbox_instance_->showTopTipBox(parent, INFO, text);
+    toptipbox_instance_->showTopTipBox(parent, INFOTIP, text);
 }
 
 void TopTipBox::showWarningTopTipBox(QWidget *parent, const QString &text) {
     if (toptipbox_instance_ == NULL) toptipbox_instance_ = new TopTipBox(parent);
-    toptipbox_instance_->showTopTipBox(parent, WARNING, text);
+    toptipbox_instance_->showTopTipBox(parent, WARNINGTIP, text);
 }
 
 void TopTipBox::showErrorTopTipBox(QWidget *parent, const QString &text) {
     if (toptipbox_instance_ == NULL) toptipbox_instance_ = new TopTipBox(parent);
-    toptipbox_instance_->showTopTipBox(parent, ERROR, text);
+    toptipbox_instance_->showTopTipBox(parent, ERRORTIP, text);
 }
 
 void TopTipBox::setTopTipBoxSize(QSize size) {

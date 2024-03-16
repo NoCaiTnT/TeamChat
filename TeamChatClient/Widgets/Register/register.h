@@ -8,18 +8,23 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QThread>
+#include <QMessageBox>
 
 #include "qframelesswindow.h"
 #include "qstringutils.h"
+#include "toptipbox.h"
+#include "requestemailclient.h"
+#include "clientglobal.h"
 
 class Register : public QFramelessWindow
 {
     Q_OBJECT
 public:
     explicit Register(QWidget *parent = nullptr);
-
 signals:
     void registerClosed();                                                          //窗口关闭信号
+    void sendRegisterEmail(QString);                                                //发送注册邮件
 
 private slots:
     void clearNicknameEditLine(bool);                                               //清除账号
@@ -34,6 +39,7 @@ private slots:
     void clickedRegister();                                                         //点击注册
     void clickedEmailSendVerificationCode();                                        //点击发送验证码
     void showHidePasswordEditLine(bool);                                            //显示/隐藏密码
+    void handleSendRegisterEmail(bool reply);                                       //处理发送邮件结果
 
 private:
     //变量
@@ -41,6 +47,11 @@ private:
     QStringUtils * qsu_ = new QStringUtils();                                       //QString工具类
     QTimer *timer_send_verification_code_;                                          //验证码计时器
     int send_interval_ = 30;                                                        //发送验证码的间隔（s）
+    TopTipBox toptipbox_verification_code_;                                         //弹窗
+    RequestEmailClient *requset_email_client_ = nullptr;                            //请求注册邮件
+    QThread *thread_register_send_email_ = nullptr;                                 //发送验证码线程
+    bool isclosed = false;
+
     //控件
     QLabel *label_welcome_title_;                                                   //欢迎标题
     QLabel *label_welcome_message_;                                                 //欢迎词
@@ -72,8 +83,6 @@ private:
     void closeEvent(QCloseEvent *e);                                                //窗口关闭事件
 
     void allInputVerification();                                                    //是否全部输入正确
-
-
 };
 
 #endif // REGISTER_H

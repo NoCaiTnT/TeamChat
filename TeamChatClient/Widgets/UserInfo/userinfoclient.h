@@ -56,8 +56,9 @@ private:
 
     //变量
     UserStatus user_status_;                                                    //用户状态
-    QThread *thread_weather_;
-    RequestWeatherClient *requset_weather_client_;
+    QThread *thread_weather_ = nullptr;                                         //请求天气线程
+    RequestWeatherClient *requset_weather_client_ = nullptr;                    //请求天气接口
+    bool isclosed = false;                                                      //是否关闭
 
     void initControls();                                                        //初始化控件
     void initConnects();                                                        //初始化控件与槽函数的连接
@@ -67,6 +68,8 @@ private:
     void setControlsTextColor(T *control, QString color);                       //设置控件文字颜色
     void setAvatar(QString url = ":/Resources/UserInfo/defaultAvatar.svg", int size = 80);     //设置头像
     void setWeatherIcon(QString url, int size);                                 //设置天气图标
+
+    void closeEvent(QCloseEvent *e);                                            //窗口关闭事件
 };
 
 #endif // USERINFOCLIENT_H

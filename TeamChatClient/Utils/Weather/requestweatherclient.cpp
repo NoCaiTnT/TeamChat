@@ -8,10 +8,10 @@ void RequestWeatherClient::getLivesWeatherFromServer()
     userinfo.set_username(username_.toStdString());
     userinfo.set_userip(ip_.toStdString());
 
-    LivesWeatherReplay reply;
-    ClientContext context;
+    weather::LivesWeatherReplay reply;
+    grpc::ClientContext context;
 
-    Status status = stub_->getLivesWeather(&context, userinfo, &reply);
+    grpc::Status status = stub_->getLivesWeather(&context, userinfo, &reply);
     if (status.ok() == false) {
         return;
     }
@@ -31,10 +31,10 @@ void RequestWeatherClient::getForecastWeatherFromServer() {
     userinfo.set_username(username_.toStdString());
     userinfo.set_userip(ip_.toStdString());
 
-    ForecastWeatherReplay reply;
-    ClientContext context;
+    weather::ForecastWeatherReplay reply;
+    grpc::ClientContext context;
 
-    Status status = stub_->getForecastWeather(&context, userinfo, &reply);
+    grpc::Status status = stub_->getForecastWeather(&context, userinfo, &reply);
     if (status.ok() == false) {
         return;
     }

@@ -13,17 +13,14 @@
 #include <QPainterPath>
 #include <QFile>
 #include <QResizeEvent>
-
+enum TopTipBoxType {
+    INFOTIP,
+    WARNINGTIP,
+    ERRORTIP
+};
 class TopTipBox : public QWidget
 {
     Q_OBJECT
-
-    enum TipBoxType {
-        INFO,
-        WARNING,
-        ERROR
-    };
-signals:
 
 public:
     TopTipBox();
@@ -50,10 +47,10 @@ private:
     //方法
     void initControls();                //初始化控件
     void initConnects();            //初始化信号与槽的连接
-    void showTopTipBox(QWidget *parent, TipBoxType type, const QString &text);      //显示提示框
+    void showTopTipBox(QWidget *parent, TopTipBoxType type, const QString &text);      //显示提示框
     void beginAnimation();          //开始动画
     void endAnimation();                //结束动画
-    void updateUI(TipBoxType type, const QString &text);
+    void updateUI(TopTipBoxType type, const QString &text);
     void setIcon(QString url, int size);
     void setStyle(QString path);                                                    //设置样式
     QWidget* getRootWidget(QWidget*);

@@ -18,7 +18,10 @@ INCLUDEPATH += \
     $$PWD/Widgets/FriendInfo \
     $$PWD/Widgets/TopTipBox \
     $$PWD/Widgets/MaskLayer \
+    $$PWD/Widgets/WeatherInfo \
     $$PWD/Utils \
+    $$PWD/Utils/Weather \
+    $$PWD/Utils/Email \
     $$PWD/Global \
 
 SOURCES += \
@@ -35,9 +38,12 @@ SOURCES += \
     Widgets/TopTipBox/toptipbox.cpp \
     Widgets/MaskLayer/masklayer.cpp \
     Widgets/UserInfo/userinfoclient.cpp \
+    Widgets/WeatherInfo/weatherinfo.cpp \
     Utils/qstringutils.cpp \
-    Utils/requestweatherclient.cpp \
-    Utils/wearthclient.cpp \
+    Utils/Weather/requestweatherclient.cpp \
+    Utils/Weather/wearthclient.cpp \
+    Utils/Email/requestemailclient.cpp \
+
 
 HEADERS += \
     Global\clientglobal.h \
@@ -54,9 +60,12 @@ HEADERS += \
     Widgets/TopTipBox/toptipbox.h \
     Widgets/MaskLayer/masklayer.h \
     Widgets/UserInfo/userinfoclient.h \
+    Widgets/WeatherInfo/weatherinfo.h \
     Utils/qstringutils.h \
-    Utils/requestweatherclient.h \
-    Utils/wearthclient.h \
+    Utils/Weather/requestweatherclient.h \
+    Utils/Weather/wearthclient.h \
+    Utils/Email/requestemailclient.h \
+
 
 
 # Default rules for deployment.

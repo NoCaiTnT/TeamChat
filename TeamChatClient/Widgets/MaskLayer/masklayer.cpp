@@ -53,10 +53,12 @@ bool MaskLayer::eventFilter(QObject *watched, QEvent *event) {
     if (watched == widget_child_) {
         if (event->type() == QEvent::Show) {
             this->show();
+            widget_parrent_->setFixedSize(widget_parrent_->geometry().width(), widget_parrent_->geometry().height());
         }
 
         if (event->type() == QEvent::Hide) {
             this->hide();
+            widget_parrent_->setFixedSize(QSize());
         }
     }
 

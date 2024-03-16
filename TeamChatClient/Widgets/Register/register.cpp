@@ -234,8 +234,10 @@ void Register::emailTextChanged(QString text) {
         } else {
             verification_flags_[2] = true;
             label_email_error_tip_->clear();
-            pushbutton_email_send_verification_code_->setEnabled(true);
-            pushbutton_email_send_verification_code_->setCursor(QCursor(Qt::PointingHandCursor));
+            if (send_interval_ == 30){
+                pushbutton_email_send_verification_code_->setEnabled(true);
+                pushbutton_email_send_verification_code_->setCursor(QCursor(Qt::PointingHandCursor));
+            }
         }
     } else {
         verification_flags_[2] = false;
@@ -257,12 +259,24 @@ void Register::emailVerificationCodeTextChanged(QString text) {
 void Register::clickedRegister() {
     //拿到用户输入的数据
     lineedit_email_verification_code_->text();
+
     //从数据库拿数据
     //对比
 }
 
 void Register::clickedEmailSendVerificationCode() {
     //发送验证码
+    ClientGlobal *client_global = ClientGlobal::getInstance();
+    requset_email_client_ = new RequestEmailClient(grpc::CreateChannel(client_global->getServerAddress().toStdString(),grpc::InsecureChannelCredentials()));
+    thread_register_send_email_ = new QThread(this);
+    requset_email_client_->moveToThread(thread_register_send_email_);
+
+    connect(this, &Register::sendRegisterEmail, requset_email_client_, &RequestEmailClient::sendRegisterEmailFromServer);
+    connect(thread_register_send_email_, &QThread::finished, requset_email_client_, &QObject::deleteLater);
+    connect(requset_email_client_, &RequestEmailClient::sendRegisterEmailFinished, this, &Register::handleSendRegisterEmail);
+    thread_register_send_email_->start();
+    emit sendRegisterEmail(lineedit_email_->text());
+
     //30s倒计时
     pushbutton_email_send_verification_code_->setEnabled(false); // 禁用按钮
     timer_send_verification_code_->start(); // 启动计时器
@@ -288,6 +302,18 @@ void Register::showHidePasswordEditLine(bool) {
     }
 }
 
+void Register::handleSendRegisterEmail(bool reply) {
+    //处理异常关闭
+    if(isclosed == true) return;
+    //弹框
+    if (reply == false) toptipbox_verification_code_.showErrorTopTipBox(this, "验证码发送失败，请稍后重试！");
+    else if (reply == true) toptipbox_verification_code_.showInformationTopTipBox(this, "验证码发送成功，请注意查收！");
+    thread_register_send_email_->quit();
+    thread_register_send_email_->wait();
+    thread_register_send_email_ = nullptr;
+    requset_email_client_ = nullptr;
+}
+
 void Register::setStyle(QString path) {
     QFile qss(path);
     qss.open(QFile::ReadOnly);
@@ -296,6 +322,13 @@ void Register::setStyle(QString path) {
 }
 
 void Register::closeEvent(QCloseEvent *e) {
+    if (thread_register_send_email_ != nullptr) {
+        thread_register_send_email_->quit();
+        thread_register_send_email_->wait();
+        thread_register_send_email_ = nullptr;
+        requset_email_client_ = nullptr;
+    }
+    isclosed = true;
     emit registerClosed();
     this->close();
 }
